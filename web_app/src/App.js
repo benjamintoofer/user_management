@@ -1,18 +1,36 @@
-import React, { Component } from 'react';
+import React from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+import * as Actions from './actions/UserActions'
+
+import TitleBar from './components/TitleBar'
+import UserTableContainer from './containers/UserTableContainer'
+
+const openUpdateModal = (e)=>{
+    console.log("OPEN!!");
+    console.log(e);
 }
 
-export default App;
+function  App(props) {
+    console.log(props);
+    return (
+        <div className="App">
+            <TitleBar />
+            <UserTableContainer listOfUsers={props.Users} openUpdateModalHandler={openUpdateModal}/>
+        </div>
+    );
+}
+
+const mapStateToProps = (state) => ({
+  ...state
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(Actions, dispatch)
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App)

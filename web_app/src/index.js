@@ -5,7 +5,20 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import configureStore from './store/ConfigureStore';
 
-const state = {}
+const state = {
+    Users: [
+        {
+            first: 'Daniel',
+            last: 'Toofer',
+            address: '306 S. Medio Dr.'
+        },
+        {
+            first: 'Benjamin',
+            last: 'Toofer',
+            address: '6343 E. Girard Ave.'
+        }
+    ]
+}
 
 const store = configureStore(state);
 
