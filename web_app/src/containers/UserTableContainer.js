@@ -1,7 +1,7 @@
 import React from 'react'
-import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
-// import Typography from 'material-ui/Typography';
+import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table'
 import { withStyles } from 'material-ui/styles';
+import Button from 'material-ui/Button'
 
 const styles = theme => ({
     root: {
@@ -10,8 +10,11 @@ const styles = theme => ({
     },
     row: {
         cursor: 'pointer'
+    },
+    addUserButton: {
+        'marginTop': '20px'
     }
-});
+})
 
 function UserTableContainer(props){
     const classes = props.classes
@@ -23,14 +26,14 @@ function UserTableContainer(props){
 
     const generateSingleUserRow = (info, index)=> {
         return (
-            <TableRow key={index} hover className={classes.row} onClick={props.openUpdateModalHandler.bind(this,index)}>
+            <TableRow key={index} hover className={classes.row} onClick={props.openUpdateUserModalHandler.bind(this,index)}>
                 <TableCell>{info.first}</TableCell>
                 <TableCell>{info.last}</TableCell>
                 <TableCell>{info.address}</TableCell>
             </TableRow>
         )
     }
-    console.log(props);
+
     return (
         <div className={classes.root}>
             <Table>
@@ -43,18 +46,11 @@ function UserTableContainer(props){
                 </TableHead>
                 <TableBody>
                     {generateAllUserTableRows(props.listOfUsers)}
-                    {/* <TableRow key={0} hover className={classes.row} onClick={props.openUpdateModalHandler.bind(this,0)}>
-                        <TableCell>Yo</TableCell>
-                        <TableCell>Yo</TableCell>
-                        <TableCell>Yo</TableCell>
-                    </TableRow>
-                    <TableRow key={1} hover className={classes.row} onClick={props.openUpdateModalHandler.bind(this,1)}>
-                        <TableCell>Benjamin</TableCell>
-                        <TableCell>Toofer</TableCell>
-                        <TableCell>6343 E. Girard Ave.</TableCell>
-                    </TableRow> */}
                 </TableBody>
             </Table>
+            <Button className={classes.addUserButton} raised color="primary" onClick={props.openAddUserModal}>
+                Add User
+            </Button>
         </div>
     )
 }

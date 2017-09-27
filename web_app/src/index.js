@@ -1,9 +1,9 @@
-import React from 'react';
-import {Provider} from 'react-redux';
-import ReactDOM from 'react-dom';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-import configureStore from './store/ConfigureStore';
+import React from 'react'
+import {Provider} from 'react-redux'
+import ReactDOM from 'react-dom'
+import App from './App'
+import registerServiceWorker from './registerServiceWorker'
+import configureStore from './store/ConfigureStore'
 
 const state = {
     Users: [
@@ -17,15 +17,22 @@ const state = {
             last: 'Toofer',
             address: '6343 E. Girard Ave.'
         }
-    ]
+    ],
+    modalIsOpen: false,
+    modalType: null,
+    modalFirstName: '',
+    modalLastName: '',
+    modalAddress: '',
+    saveButtonDisabled: true,
+    updateButtonDisabled: true
 }
 
-const store = configureStore(state);
+const store = configureStore(state)
 
 ReactDOM.render(
     <Provider store={store}>
         <App />
     </Provider>,
     document.getElementById('root')
-);
-registerServiceWorker();
+)
+registerServiceWorker()
